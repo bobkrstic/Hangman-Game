@@ -1,0 +1,44 @@
+<!-- display instructions for the user:
+
+"Press any key to get started."
+Wins: (number of times the user guessed the word correctly)
+the word to be displayed like _ _ _ _ _
+(the user guesses and _ a _ c  _ lines are being replaced with letters)
+display number of guesses remaining
+display letters that are already guessed
+after the user wins or loses, the game starts over automatically  -->
+
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>The Hangman</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script type="text/javascript" src="assets/javascript/game.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	
+</head>
+<body>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8">
+			<div class="jumbotron">
+				<h2>Press any key to get started!</h2>
+				<h3>Your word is:</h3>
+				<h2 id="wordToGuess">YourWord</h2>
+				<h2 id="lines">_ _ _ _ _ _ _ _</h2>
+				<h3>Number of guesses remaining:</h3>
+				<h4>Letters you chose so far:</h4>
+				<p id="chosenLetters">here go letters</p>
+				<h5>Wins:</h5>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>
