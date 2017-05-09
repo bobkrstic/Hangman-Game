@@ -25,14 +25,14 @@
 // start game again.
 
 
-
+var wins = 0;
 
 function startGame() 
 {
 	var wordBank = ["scope", "globe", "parents", "carpet", "mouse", "america", "thailand", "snakes", "shelves", "cooling", "museum"];
 	var chosenLetters = [];
 	var linesWord = [];
-	var wins = 0;
+	
 	var lives = 10;
 	var matchFound;
 	// var a;
@@ -104,12 +104,13 @@ function startGame()
 
 			// console.log("This is randWord " + a);
 			// console.log("This is linesWord " + b);
-
-
-			if (randWord === linesWord) {
+			var a = linesWord.join("");
+			console.log(linesWord.join(""));
+			if (randWord === a) {
 				wins = wins + 1;
 				alert("You won");
 				alert("Press any key to start again.");
+				startGame();
 				// console.log(a===b);
 			}
 
