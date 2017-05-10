@@ -27,23 +27,25 @@
 
 var wins = 0;
 
+
+
 function startGame() 
 {
+	var randWord = [];
 	var wordBank = ["scope", "globe", "parents", "carpet", "mouse", "america", "thailand", "snakes", "shelves", "cooling", "museum"];
 	var chosenLetters = [];
 	var linesWord = [];
+	var usersWord = [];
 	
 	var lives = 10;
 	var matchFound;
-	// var a;
-	// var b;
 	
 
     // computer choses random word out of our array of words
 	// our array of different words is wordBank[]
-	var randWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-	// a = randWord.toString();
+	randWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 	console.log(randWord);
+	
 
 		// when the word is chosen, count the number of letters in it
 		// then put that many lines below the word that is hidden	   
@@ -55,16 +57,15 @@ function startGame()
 	//display number of lines/number of letters in the word
 	document.querySelector("#linesWORD").innerHTML = linesWord;
 
-
-// while (a !== b) {
-	//document.onkeyup = function(event) 
+ 
 	function myGame()
 	{
 		// get user's input ands store it in the userGuess variable
 		var userGuess = event.key;
 
-		// display the random word
-	    document.querySelector("#wordToGuess").innerHTML = randWord;
+		// make sure the conten is clear. Here we will display the 
+		// random word once it is guessed or not guessed. 
+	    document.querySelector("#wordToGuess").innerHTML = "";
 			
 
 		// iterate through the array that the computer randomly chose
@@ -87,9 +88,6 @@ function startGame()
 				}
 			}
 
-
-			
-
 			// add the chosen letter to the chosenLetters array
 			chosenLetters.push(userGuess);
 
@@ -99,21 +97,27 @@ function startGame()
 			} 
 
 
-			// a = [randWord].toString();
-			// b = [linesWord].toString();
-
-			// console.log("This is randWord " + a);
-			// console.log("This is linesWord " + b);
-			var a = linesWord.join("");
+			// testing if it matched the hidden word. 
+			usersWord = linesWord.join("");
 			console.log(linesWord.join(""));
-			if (randWord === a) {
+			if (randWord === usersWord) {
 				wins = wins + 1;
 				alert("You won");
 				alert("Press any key to start again.");
+				// display the random word
+				document.querySelector("#wordToGuess").innerHTML = randWord;
 				startGame();
-				// console.log(a===b);
 			}
 
+
+			// test if there are still lives left to play
+			if (lives == 0) {
+				alert("You lost");
+				alert("Press any key to start again.");
+				// display the random word
+	    		document.querySelector("#wordToGuess").innerHTML = randWord;
+				startGame();
+			}
 
 			// present to the user the chosenLetters array
 			document.querySelector("#chosenLetters").innerHTML = chosenLetters;
@@ -126,25 +130,11 @@ function startGame()
 
 			// display number of wins
 			document.querySelector("#numberOfWIns").innerHTML = wins;
-
-			if (lives == 0) {
-				alert("You lost");
-				alert("Press any key to start again.");
-				//location.reload();
-				startGame();
-			}
-			
-			
 	};
-
 
 	document.onkeyup = myGame;
 
-// 	b = linesWord.toString();
-// }
 };
-
-
 
 document.onkeyup = startGame;
 
